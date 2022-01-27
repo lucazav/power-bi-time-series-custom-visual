@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "author": {"name":"Luca Zavarella","email":"lucazavarella@email.me"},
+    "resources": [
+        {
+            "resourceId": "rId0",
+            "sourceType": 5,
+            "file": "resources/interactivetsBB3C2FD6EC3D483DB7CA402F922AA628.pbiviz.json"
+        }
+    ],
+    "visual": {"name":"interactivets","displayName":"Interactive Time-Series Plot","guid":"interactivetsBB3C2FD6EC3D483DB7CA402F922AA628","visualClassName":"Visual","version":"1.0.0","description":"Interactive time-series plot implemented using functions from the 'modeltime' package","supportUrl":"https://medium.com/@lucazav","gitHubUrl":"https://github.com/lucazav/power-bi-time-series-custom-visual"},
+    "metadata": {
+        "pbivizjson": {
+            "resourceId": "rId0"
+        }
+    }  
+}

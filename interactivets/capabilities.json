@@ -1,0 +1,219 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Date Variable",
+      "description": "Date variable associated to the time-series to plot",
+      "kind": "GroupingOrMeasure",
+      "name": "index"
+    },
+    {
+      "displayName": "Value Variable",
+      "description": "Numeric variable of the time-series to plot",
+      "kind": "GroupingOrMeasure",
+      "name": "value"
+    },
+    {
+      "displayName": "Value Type Variable",
+      "description": "String variable indicating the nature of the value. It assumes label 'actual' if the corresponding value is an actual value for the time-series. It assumes label 'prediction' if the corresponding value is a prediction for the time-series.",
+      "kind": "GroupingOrMeasure",
+      "name": "value_type"
+    },
+    {
+      "displayName": "Confidence Low Variable",
+      "description": "Numeric variable associated to the low value of the confidence bar to plot",
+      "kind": "GroupingOrMeasure",
+      "name": "conf_lo"
+    },
+    {
+      "displayName": "Confidence High Variable",
+      "description": "Numeric variable associated to the high value of the confidence bar to plot",
+      "kind": "GroupingOrMeasure",
+      "name": "conf_hi"
+    },
+    {
+      "displayName": "Model ID",
+      "description": "Optional integer variable used to identify observations of different models in the same dataset",
+      "kind": "GroupingOrMeasure",
+      "name": "model_id"
+    },
+    {
+      "displayName": "Model Description",
+      "description": "Optional string variable used as model label associated to the Model ID",
+      "kind": "GroupingOrMeasure",
+      "name": "model_descr"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "scriptResult": {
+        "dataInput": {
+          "table": {
+            "rows": {
+              "select": [
+                {
+                  "for": {
+                    "in": "index"
+                  }
+                },
+                {
+                  "for": {
+                    "in": "value"
+                  }
+                },
+                {
+                  "for": {
+                    "in": "value_type"
+                  }
+                },
+                {
+                  "for": {
+                    "in": "conf_lo"
+                  }
+                },
+                {
+                  "for": {
+                    "in": "conf_hi"
+                  }
+                },
+                {
+                  "for": {
+                    "in": "model_id"
+                  }
+                },
+                {
+                  "for": {
+                    "in": "model_descr"
+                  }
+                }
+              ],
+              "dataReductionAlgorithm": {
+                "top": {}
+              }
+            }
+          }
+        },
+        "script": {
+          "scriptProviderDefault": "R",
+          "scriptOutputType": "html",
+          "source": {
+            "objectName": "rcv_script",
+            "propertyName": "source"
+          },
+          "provider": {
+            "objectName": "rcv_script",
+            "propertyName": "provider"
+          }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "rcv_script": {
+      "properties": {
+        "provider": {
+          "type": {
+            "text": true
+          }
+        },
+        "source": {
+          "type": {
+            "scripting": {
+              "source": true
+            }
+          }
+        }
+      }
+    },
+    "settings_variable_params": {
+      "displayName": "Plot Settings",
+      "properties": {
+        "conf_interval_show_bool": {
+          "displayName": "Show Confidence Interval",
+          "description": "Whether or not to include the confidence interval as a ribbon.",
+          "type": {
+            "bool": true
+          }
+        },
+        "conf_interval_alpha": {
+          "displayName": "Alpha Confidence Interval",
+          "description": "Fill opacity for the confidence interval. Range (0, 1).",
+          "type": {
+            "numeric": true
+          }
+        },
+        "smooth_bool": {
+          "displayName": "Show Trendline Smoother",
+          "description": "Logical - Whether or not to include a trendline  LOESS smoother.",
+          "type": {
+            "bool": true
+          }
+        },
+        "legend_show_bool": {
+          "displayName": "Show Legend",
+          "description": "Logical. Whether or not to show the legend. Can save space with long model descriptions.",
+          "type": {
+            "bool": true
+          }
+        },
+        "legend_max_width": {
+          "displayName": "Max Width of Legend Text",
+          "description": "Numeric. The width of truncation to apply to the legend text.",
+          "type": {
+            "numeric": true
+          }
+        },
+        "title_str": {
+          "displayName": "Title",
+          "description": "Title for the plot.",
+          "type": {
+            "text": true
+          }
+        },
+        "x_lab_str": {
+          "displayName": "X Label",
+          "description": "X-axis label for the plot.",
+          "type": {
+            "text": true
+          }
+        },
+        "y_lab_str": {
+          "displayName": "Y Label",
+          "description": "Y-axis label for the plot.",
+          "type": {
+            "text": true
+          }
+        },
+        "plotly_slider_bool": {
+          "displayName": "Show Plotly Slider",
+          "description": "If TRUE, returns a plotly date range slider.",
+          "type": {
+            "bool": true
+          }
+        },
+        "line_color_picker": {
+          "displayName": "Line Color Fill",
+          "description": "Line color. Overrided if 'color_var' is specified.",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "conf_interval_fill_picker": {
+          "displayName": "Confidence Interval Color Fill",
+          "description": "Fill color for the confidence interval.",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "suppressDefaultTitle": true
+}
