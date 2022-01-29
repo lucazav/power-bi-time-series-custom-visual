@@ -44,7 +44,7 @@ export class settings_variable_params {
   public x_lab_str: string = "";
   public y_lab_str: string = "";
   public plotly_slider_bool: boolean = false;
-  public conf_interval_fill_picker : string = "lightblue";
+  public conf_interval_fill_picker : string = "#ec8fca";
 }
 
 

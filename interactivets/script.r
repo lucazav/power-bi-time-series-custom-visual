@@ -24,7 +24,7 @@ y_lab <- ""
 plotly_slider <- FALSE
 
 
-conf_interval_fill <- "lightblue"
+conf_interval_fill <- "#ec8fca"
 #-----------------------------------
 
 if(exists("settings_variable_params_conf_interval_show_bool")){
