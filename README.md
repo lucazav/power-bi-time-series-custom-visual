@@ -6,15 +6,15 @@ Assuming you want to display a time-series including also the prediction interva
 
 Take the following time-series as an example:
 
-![img01](/img/01.png)
+![time-series plot](/img/01.png)
 
 One can guess by eye that an annual seasonality is present. If we add a forecast in Power BI thanks to the _Analytics_ tab and let the tool automatically determine the seasonality, the results are not the best:
 
-![img01](/img/02.png)
+![time-series auto forecasting](/img/02.png)
 
 If, on the other hand, we manually assign the number of time-series points associated with seasonality, the results improve dramatically:
 
-![img01](/img/03.png)
+![time-series manual forecasting](/img/03.png)
 
 As you can see, the forecasting follows the trend of the peaks quite well, although it is slightly overestimated. It basically failed to capture the fact that the trend line is slightly lower than estimated.
 
@@ -24,7 +24,7 @@ Now suppose to perform a batch scoring through the aforesaid model and therefore
 
 This Power BI custom visual that I am sharing with you was created to fill the gap just described. Thanks to it, it is possible to plot the shared time-series forecasting data in this repository (_data/ts_forecast.csv_) as well:
 
-![img01](/img/04.png)
+![time-series forecasting using the custom visual](/img/04.png)
 
 Unlike the previous forecasting provided by Power BI, it is evident that the values predicted through the external model are slightly underestimated, but more correctly follow the trend line of the actual values.
 
@@ -42,7 +42,7 @@ The only problem I encountered was the fact that Power BI service has an outdate
 
 After making the above changes, the result was as follows:
 
-![demo of interactive custom visual](/img/interactive_demo.gif)
+![animated gif of the interactive custom visual](/img/interactive_demo.gif)
 
 But let's see now how to install the time-series custom visual.
 
@@ -50,17 +50,21 @@ But let's see now how to install the time-series custom visual.
 
 In order to install a Power BI custom visual, you must click on the ellipses in the Visualizations pane, click on the menu item _"Import a visual from file"_ and then select the custom visual to import:
 
-![img01](/img/05.png)
+![installing the custom visual in Power BI](/img/05.png)
 
-The custom visual to import is the _.pbiviz_ file located in the "_dist_" folder of the R HTML visual folder structure (see references for more details):
+The custom visual to import is the _.pbiviz_ file located in the "_dist_" folder of the R HTML visual folder structure once you clone the repository (see references for more details):
 
-![img01](/img/06.png)
+![custom visual file from source](/img/06.png)
+
+Otherwise you can download the latest release of the visual directly from the [Releases page](https://github.com/lucazav/power-bi-time-series-custom-visual/releases) on GitHub:
+
+![custom visual file from releases](/img/06_a.png)
 
 After loading the _.pbiviz_ file, a new icon identifying the time-series custom visual will be displayed in the Visualizations pane, as shown in the figure above.
 
 Right after clicking on the new icon, you will be asked to enable the custom visual. Once you click "_Enable_", you can interact with the data fields of the custom visual:
 
-![img01](/img/07.png)
+![time-series custom visual data fields](/img/07.png)
 
 The requested data are the following:
 
@@ -74,7 +78,7 @@ The requested data are the following:
 
 Once you have entered the first data in the above fields, you can explore the _Format_ tab of the custom visual. In particular, there is the "_Plot Settings_" section that allows you to interact with the elements of the displayed plot:
 
-![img01](/img/08.png)
+![time-series custom visual format options](/img/08.png)
 
 Now let's see what is the expected format of the input dataset that feeds the data fields.
 
@@ -82,11 +86,11 @@ Now let's see what is the expected format of the input dataset that feeds the da
 
 Suppose you have a time-series running from time T<sub>0</sub> to time T<sub>n</sub>, for a total of _n_ observations. We will then have _n_ current values in the series. Suppose now you want to do the forecasting for the values associated with the time range from T<sub>i</sub> to T<sub>n</sub>. This means that you want to predict the last _n-i+1_ values of the series. Since the dataset in input has a single variable containing the values (_Value_), distinguished in their function by the variable _Value Type_, the variable _Value_ will contain both all the actual values (_n_ values for which _Value Type = "actual"_), and the prediction values (the _n-i+1_ values for which _Value Type = "prediction"_). This means that in the _Date_ column we will find the temporal range from T<sub>i</sub> to T<sub>n</sub> repeated twice, once for the actual values and once for the predicted values:
 
-![img01](/img/09.png)
+![expected dataset schema for 1 model forecasting](/img/09.png)
 
 If you want to plot the forecasting obtained from 2 models, in addition of adding other _n-i+1_ rows to the dataset, you have to introduce two new variables: _Model ID_ and _Model Description_. Through these two variables it is possible to associate the predictions contained in the _Value_ field to a specific model from which they have been obtained. All becomes clearer looking at the following figure: 
 
-![img01](/img/10.png)
+![expected dataset schema for 2 models forecasting](/img/10.png)
 
 Let's see now how to put into practice everything seen.
 
@@ -107,6 +111,6 @@ Below is a list of links to key references:
 
 If you want to learn how to create a Power BI R Custom Visual from scratch, as well as many other topics on how to better integrate Python and R into Power BI, you can find detailed guides in my book "[_Extending Power BI with Python and R_](https://www.amazon.com/Extending-Power-Python-transform-analytical/dp/1801078203/)":
 
-<a href="https://www.amazon.com/Extending-Power-Python-transform-analytical/dp/1801078203/" rel="Extending Power BI with Python and R">![img01](/img/11.png)</a>
+<a href="https://www.amazon.com/Extending-Power-Python-transform-analytical/dp/1801078203/" rel="Extending Power BI with Python and R">![Extending Power BI with Python and R book](/img/11.png)</a>
 
 
