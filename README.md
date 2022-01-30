@@ -96,7 +96,7 @@ Let's see now how to put into practice everything seen.
 
 ## Showing everything in a demo
 
-You can find the ts_forecasting.pbix file in the "demo" folder of the repository. In it I have highlighted the differences in applying forecasting to a time-series provided in a CSV file using the standard Power BI features and using the time-series custom visual. The CSV file is located in the "data" folder of the repository.
+You can find the ts_forecasting.pbix file in the "demo" folder of the repository. In it I have highlighted the differences in applying forecasting to a time-series provided in a CSV file using the standard Power BI features and using the time-series custom visual. The CSV file is located in the "data" folder of the repository and it contains data extracted from the [Kaggle's Retail Data Analytics competition](https://www.kaggle.com/manjeetsingh/retaildataset?select=stores+data-set.csv) made available under the _CC0: Public Domain_ license.
 
 You can also test the time-series custom visual in a live demo published via Power BI's "Publish to web" option. Here is [the link](https://app.powerbi.com/view?r=eyJrIjoiNTZlZTNkZTctMzZiNi00NTUzLTlkMzgtMTZkZTRlNDc1YmU2IiwidCI6IjA4MjRlOGM5LWQzNWEtNDAwMC1hYTYxLTQ3YjM5MDdjMDEyZSIsImMiOjF9&pageName=ReportSection) to the live demo.
 
